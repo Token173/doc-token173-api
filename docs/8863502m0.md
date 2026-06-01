@@ -1,0 +1,145 @@
+# 扣子工作流简单配置从输入到获取url
+
+# 如果你是扣子vip,可以直接下载工作流导入即可
+
+[https://wwaod.lanzn.com/b011lwl8ij](https://wwaod.lanzn.com/b011lwl8ij)
+密码:3qnp
+
+# 以sora2为例子从输入文本和上传图片到最后获取url的简单循环工作流（下面是整体图）
+
+![企业微信截图_17677735722402.png](https://api.apifox.com/api/v1/projects/5443236/resources/611035/image-preview)
+
+## 一、开始
+根据提示词和图片 新增输入的变量，根据接口需要的参数来，需要输入更多参数也可以添加
+![企业微信截图_1767773636845.png](https://api.apifox.com/api/v1/projects/5443236/resources/611037/image-preview)
+
+## 二、请求模型 （新增http节点）
+根据文档配置http请求
+1.第一个红框位置配置请求方式和url
+2.第二个红框配置请求头
+3.第三个地方配置请求体，请根据文档中相应的请求体选择格式，在这个例子中用的json，其中标有开始的是从前面的输入中获取的参数，在编辑直接{}输入就能选择
+![企业微信截图_17677740268061.png](https://api.apifox.com/api/v1/projects/5443236/resources/611039/image-preview)
+
+## 三、处理请求结果获取taskId（新增代码节点）
+如图所示在输入的时候变量值直接获取上一个的输出body
+使用代码解析body获取其中的id（在本示例中代码选择的是JavaScript  代码如下）
+```
+async function main({ params }: Args): Promise<Output> {
+    // 1. 从 params.input 中获取 body 字符串
+    // 注意：这里假设 params.input 是整个 HTTP 响应对象
+    const bodyStr = params.input;
+
+    // 2. 将字符串格式的 body 解析为 JSON 对象
+    // 因为 body 的值是一个字符串 "{\"id\":...}"，所以需要 JSON.parse
+    let taskId = "";
+    try {
+        const bodyObj = JSON.parse(bodyStr);
+        taskId = bodyObj.id;
+    } catch (e) {
+        // 防止解析失败导致运行报错
+        console.log("JSON 解析失败:", e);
+    }
+
+    // 3. 构建输出对象，返回 taskId
+    const ret = {
+        "taskId": taskId
+    };
+
+    return ret;
+}
+```
+最后输出的位置的变量名请与代码中ret 中的参数名一致
+![企业微信截图_17677742429398.png](https://api.apifox.com/api/v1/projects/5443236/resources/611042/image-preview)
+
+## 四、循环请求查询接口获取url（新增循环节点）
+
+### 1. 设置循环（在本次示例中使用的是无限循环根据判断条件跳出循环）根据需要设置
+    中间变量是获取的前一个代码节点输出的taskId
+    输出了url和状态
+![企业微信截图_17677745518897.png](https://api.apifox.com/api/v1/projects/5443236/resources/611056/image-preview)
+
+### 2. 在循环中新增一个http节点请求查询任务
+其中参数请求体根据文档中的使用的模型的查询任务来
+![企业微信截图_17677753812075.png](https://api.apifox.com/api/v1/projects/5443236/resources/611068/image-preview)
+
+### 3. 新增一个代码节点获取url和任务状态
+如图所示 输入获取的是查询任务的输出body代码如下
+
+```
+async function main({ params }: Args): Promise<Output> {
+    // 1. 从 params.input 中获取 body 字符串
+    const bodyStr = params.input;
+
+    // 2. 将字符串格式的 body 解析为 JSON 对象
+    let url = "";
+    let status = "";
+    try {
+        const bodyObj = JSON.parse(bodyStr);
+        url = bodyObj.video_url;
+        status = bodyObj.status;
+    } catch (e) {
+        // 防止解析失败导致运行报错
+        console.log("JSON 解析失败:", e);
+    }
+
+    // 3. 构建输出对象，返回 taskId
+    const ret = {
+        "url": url,
+        "status": status
+    };
+
+    return ret;
+}
+```
+![企业微信截图_17677755174326.png](https://api.apifox.com/api/v1/projects/5443236/resources/611069/image-preview)
+
+### 4.新增一个判断节点来判断查询是否获取了url
+
+在这个示例中，判断节点设置了两个分支第一个分支是获取的上一个代码节点输出的url判断是否为空
+第二个分支是判断状态是否为失败
+
+![企业微信截图_17677757634138.png](https://api.apifox.com/api/v1/projects/5443236/resources/611072/image-preview)
+
+### 5根据判断的结果来执行
+新增终止循环的节点，当判断节点的第一个判断成功或者第二个判断成功时都终止循环
+新增定时器节点和继续循环节点，当判断节点的两个判断都为否时先执行定时器（防止请求并发数量导致请求失败，建议设置为1500ms），定时器后连接继续循环
+
+![企业微信截图_17677758794115.png](https://api.apifox.com/api/v1/projects/5443236/resources/611074/image-preview)
+
+五、处理循环得到的结果（新增一个代码节点）
+因为循环后获得的结果是一个数组需要处理只获取最后输出的结果（代码如下）
+输入的是循环输出的结果
+
+```
+async function main({ params }: Args): Promise<Output> {
+
+    // 获取输入
+    const urls = params.urls;
+    const statuss = params.statuss;
+
+    // 3. 构建输出对象，返回 taskId
+    const ret = {
+        "url": urls[urls?.length -1],
+        "status": statuss[statuss?.length -1]
+    };
+
+    return ret;
+}
+```
+输出的是处理后的url和状态
+![企业微信截图_17677761996893.png](https://api.apifox.com/api/v1/projects/5443236/resources/611075/image-preview)
+
+## 六、判断url是否有值来确定视频生成成功还是失败
+
+![企业微信截图_17677764885854.png](https://api.apifox.com/api/v1/projects/5443236/resources/611081/image-preview)
+
+## 七、最后输出结果
+如图所示输出成功和失败的结果然后结束，可以根据自己的需要把输出文本还是变量，也可以把输出结果放在结束节点输出
+![企业微信截图_17677765862529.png](https://api.apifox.com/api/v1/projects/5443236/resources/611085/image-preview)
+
+![企业微信截图_17677765941365.png](https://api.apifox.com/api/v1/projects/5443236/resources/611084/image-preview)
+## 
+## 八、实现效果
+
+![企业微信截图_17677770925315.png](https://api.apifox.com/api/v1/projects/5443236/resources/611088/image-preview)
+
