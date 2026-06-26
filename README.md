@@ -1,12 +1,12 @@
 # 2026版 Token173中转API教程文档_Claude中转教程_中转站配置使用教程_支持Claude、Midjourney、Suno、OpenAI等500+模型教程
 
-Token173中转API教程文档：https://docs.token173.com
+Token173中转API教程文档：https://docs.token173.net
 
 ## Token173中转API教程文档与使用指南
 
 在接入大语言模型和 AI 绘图时，很多开发者会遇到网络不稳定、官方接口难以访问或支付不便的问题。Token173中转 API 就是一个非常实用的解决方案，它通过中转站形式，帮助用户快速对接 OpenAI、Claude、Midjourney 等模型。
 
-Token173中转API教程文档：https://docs.token173.com
+Token173中转API教程文档：https://docs.token173.net
 
 如果你是第一次使用，可以参考 官方 API 教程文档，平台接口与 OpenAI 完全兼容，支持 /v1/chat/completions、/v1/images/generations 等标准端点。
 
@@ -28,8 +28,8 @@ Token173聚合中转API是一个高效的Open AI、Midjourney API代理、Claude
 
 ### 官方链接
 
-- 官网：https://token173.com
-- 教程文档 & 示例代码：https://docs.token173.com
+- 官网：https://token173.net
+- 教程文档 & 示例代码：https://docs.token173.net
 
 ## 主流模型全支持
 
@@ -120,9 +120,9 @@ AI API中转站，就是一个聚合、统一和转发AI接口调用的服务平
 
 一些中转站提供调用日志、使用统计、速率限制优化、故障自动切换等附加功能。对企业级用户，还可能支持私有化部署与团队协作。
 
-## 为什么选择【Token173聚合中转API】（token173.com）？
+## 为什么选择【Token173聚合中转API】（token173.net）？
 
-在众多中转服务中，Token173聚合中转API（token173.com）凭借稳定性、易用性与性价比脱颖而出：
+在众多中转服务中，Token173聚合中转API（token173.net）凭借稳定性、易用性与性价比脱颖而出：
 
 - 多模型支持：支持国内外主流大模型650+，满足不同场景的需求。
 - 高可用性：全球加速+负载均衡，保证请求稳定性与低延迟。
@@ -358,4 +358,4 @@ AI API中转站，就是一个聚合、统一和转发AI接口调用的服务平
 
 ## 总结
 
-Token173聚合中转API（token173.com），开发者和企业能够以更低成本、更高效率、更稳定的方式调用全球主流AI模型，为智能应用的落地加速。
+Token173聚合中转API（token173.net），开发者和企业能够以更低成本、更高效率、更稳定的方式调用全球主流AI模型，为智能应用的落地加速。
