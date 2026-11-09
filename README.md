@@ -6,7 +6,7 @@ docs.token173.net 的 GitHub 镜像。线上文档站：https://docs.token173.ne
 
 ## 三步开始用
 
-1. 注册账号：https://token173.net，新账号送 0.2 美元额度
+1. 注册账号：https://token173.net ，新账号送 0.2 美元额度
 2. 建令牌：后台左侧「令牌」→ 新建 → 复制 `sk-` 开头的字符串
 3. 填配置：按下面两张表选协议，改 Base URL 和 Key
 
