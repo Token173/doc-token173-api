@@ -6,7 +6,7 @@ docs.token173.net 的 GitHub 镜像。线上文档站：https://docs.token173.ne
 
 ## 三步开始用
 
-1. 注册账号：https://token173.net ，新账号送 0.2 美元额度
+1. 注册账号：https://token173.net，新账号送 0.2 美元额度
 2. 建令牌：后台左侧「令牌」→ 新建 → 复制 `sk-` 开头的字符串
 3. 填配置：按下面两张表选协议，改 Base URL 和 Key
 
@@ -29,10 +29,10 @@ docs.token173.net 的 GitHub 镜像。线上文档站：https://docs.token173.ne
 | 系列 | 模型 ID |
 |---|---|
 | Claude | `claude-opus-5-5`、`claude-sonnet-5-5`、`claude-haiku-5-5`、`claude-fable-5`、`claude-fable-5-1`、`claude-opus-4-8` |
-| OpenAI | `gpt-6.2-astra`、`gpt-6.1-sol`、`gpt-6.1-terra`、`gpt-6-sol`、`gpt-6-astra`、`gpt-5.6-sol`、`gpt-5.6-terra`、`gpt-5.5`、`gpt-5.4` |
-| Gemini | `gemini-3.8-flash`、`gemini-3-pro`、`gemini-2.5-pro`、`gemini-2.5-flash` |
+| OpenAI | `gpt-6-astra`、`gpt-6.1-sol`、`gpt-6.1-terra`、`gpt-6-sol`、`gpt-5.6-sol`、`gpt-5.6-terra`、`gpt-5.5`、`gpt-5.4` |
+| Gemini | `gemini-3.8-flash`、`gemini-3-pro-preview`、`gemini-2.5-flash` |
 | Grok | `grok-4.7`、`grok-4.5` |
-| 国产 | `glm-5.3-flash`、`deepseek-v4`、`deepseek-v4-pro-0813`、`deepseek-v4-flash-0731`、`kimi-k3`、`minimax-h3` |
+| 国产 | `glm-5.3-flash`、`deepseek-v4-pro`、`deepseek-v4-pro-0813`、`deepseek-v4-flash-0731`、`kimi-k3`、`MiniMax-H3` |
 
 **图像**
 
@@ -40,15 +40,15 @@ docs.token173.net 的 GitHub 镜像。线上文档站：https://docs.token173.ne
 |---|---|
 | `gpt-image-2.6-flare` | 2.6 的快速迭代版，布局优化，低画质最快约 6 秒 |
 | `gpt-image-2.6-sunburst` | 2.6 的细节版，编辑精度和一致性更好 |
-| `gpt-image-2.5` | 写实与细节 |
-| `gpt-image-2`、`gpt-image-2-d` | 基础版、编辑模式 |
-| `nano-banana-pro`、`nano-banana-2` | 谷歌图像系列 |
+| `gpt-image-2.5-sunburst` | 写实与细节 |
+| `gpt-image-2` | 基础版，单价低 |
+| `gemini-nano-banana-2.1` | 谷歌图像系列 |
 
 **视频**
 
 | 模型 ID | 说明 |
 |---|---|
-| `veo-3.1` | 文本/图生视频，带音频 |
+| `veo_3_1` | 文本/图生视频，带音频 |
 | `doubao-seedance-2-0-fast-260128` | 豆包快速版 |
 | `sd-2-5-480p` | SD 2.5 480p |
 
