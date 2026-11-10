@@ -28,7 +28,7 @@ docs.token173.net 的 GitHub 镜像。线上文档站：https://docs.token173.ne
 
 | 系列 | 模型 ID |
 |---|---|
-| Claude | `claude-opus-5-5`、`claude-sonnet-5-5`、`claude-haiku-5-5`、`claude-fable-5`、`claude-fable-5-1`、`claude-opus-4-8` |
+| Claude | `claude-opus-5-5`、`claude-sonnet-5-5`、`claude-haiku-5-5`、`claude-fable-5-2`、`claude-fable-5-1`、`claude-fable-5`、`claude-opus-4-8` |
 | OpenAI | `gpt-6-astra`、`gpt-6.1-sol`、`gpt-6.1-terra`、`gpt-6-sol`、`gpt-5.6-sol`、`gpt-5.6-terra`、`gpt-5.5`、`gpt-5.4` |
 | Gemini | `gemini-3.8-flash`、`gemini-3-pro-preview`、`gemini-2.5-flash` |
 | Grok | `grok-4.7`、`grok-4.5` |
