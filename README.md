@@ -50,7 +50,6 @@ docs.token173.net 的 GitHub 镜像。线上文档站：https://docs.token173.ne
 |---|---|
 | `veo_3_1` | 文本/图生视频，带音频 |
 | `doubao-seedance-2-0-fast-260128` | 豆包快速版 |
-| `sd-2-5-480p` | SD 2.5 480p |
 
 模型名即 ID，全小写，不要加空格。
 
